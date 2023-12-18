@@ -5,12 +5,14 @@ class CardWidget extends StatelessWidget {
       {super.key,
       required this.examples,
       required this.vowel,
-      required this.hiragana,
-      required this.kanaType});
-  final String hiragana;
+      required this.character,
+      required this.kanaType,
+      required this.characters});
+  final String character;
   final String vowel;
   final List<Widget> examples;
   final String kanaType;
+  final String characters;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class CardWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  hiragana,
+                  character,
                   style: const TextStyle(
                     fontSize: 30,
                     color: Colors.white,
@@ -70,7 +72,7 @@ class CardWidget extends StatelessWidget {
                     ? ClipRRect(
                         borderRadius: BorderRadius.circular(10),
                         child: Image.network(
-                          'https://mardood.pythonanywhere.com//media/hiragana/static/150x150/$hiragana.png',
+                          'https://mardood.pythonanywhere.com//media/$characters/static/150x150/$character.png',
                           width: 90,
                           height: 90,
                         ),

@@ -1,4 +1,5 @@
 import 'package:app/pages/hiragana_page.dart';
+import 'package:app/pages/katakana_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatelessWidget {
@@ -29,10 +30,25 @@ class MyHomePage extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () => Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const HiraganaPage())),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const HiraganaPage(
+                    title: 'hiragana',
+                  ),
+                ),
+              ),
               child: const Text('Hiragana'),
+            ),
+            ElevatedButton(
+              onPressed: () => Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const KatakanaPage(
+                    title: 'katakana',
+                  ),
+                ),
+              ),
+              child: const Text('Katakana'),
             ),
           ],
         ),

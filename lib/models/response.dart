@@ -24,6 +24,38 @@ class Ex {
   }
 }
 
+class Hiragana {
+  int id;
+  List<Ex> ex;
+  String sound;
+  String vowel;
+  String hiragana;
+  String kanaType;
+
+  Hiragana({
+    required this.id,
+    required this.ex,
+    required this.sound,
+    required this.vowel,
+    required this.hiragana,
+    required this.kanaType,
+  });
+
+  factory Hiragana.fromJson(Map<String, dynamic> json) {
+    var exList = json['ex'] as List;
+    List<Ex> exData = exList.map((e) => Ex.fromJson(e)).toList();
+
+    return Hiragana(
+      id: json['id'] ?? 0,
+      ex: exData,
+      sound: json['sound'] ?? '',
+      vowel: json['vowel'] ?? '',
+      hiragana: json['hiragana'] ?? '',
+      kanaType: json['kanaType'] ?? '',
+    );
+  }
+}
+
 class Katakana {
   int id;
   List<Ex> ex;
@@ -59,22 +91,28 @@ class Katakana {
 class KanaTypes {
   int id;
   String kanaType;
+  List<Hiragana> hiragana;
   List<Katakana> katakana;
 
   KanaTypes({
     required this.id,
     required this.kanaType,
+    required this.hiragana,
     required this.katakana,
   });
 
   factory KanaTypes.fromJson(Map<String, dynamic> json) {
+    var hiraganaList = json['hiragana'] as List;
     var katakanaList = json['katakana'] as List;
+    List<Hiragana> hiraganaData =
+        hiraganaList.map((e) => Hiragana.fromJson(e)).toList();
     List<Katakana> katakanaData =
         katakanaList.map((e) => Katakana.fromJson(e)).toList();
 
     return KanaTypes(
       id: json['id'] ?? 0,
       kanaType: json['kanaType'] ?? '',
+      hiragana: hiraganaData,
       katakana: katakanaData,
     );
   }

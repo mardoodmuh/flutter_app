@@ -2,8 +2,8 @@ import 'package:app/models/response.dart';
 import 'package:app/widgets/card_widget.dart';
 import 'package:flutter/material.dart';
 
-class HiraganaPage extends StatelessWidget {
-  const HiraganaPage({super.key, required this.title});
+class KatakanaPage extends StatelessWidget {
+  const KatakanaPage({super.key, required this.title});
   final String title;
 
   @override
@@ -46,10 +46,10 @@ class HiraganaPage extends StatelessWidget {
                             fontSize: 20,
                           ),
                         ),
-                        ...data[index].hiragana.map(
+                        ...data[index].katakana.map(
                           (e) {
                             return CardWidget(
-                              character: e.hiragana,
+                              character: e.katakana,
                               vowel: e.vowel,
                               examples: [
                                 ...e.ex.map((i) {
